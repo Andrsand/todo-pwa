@@ -1,0 +1,13 @@
+{
+  "name": "todo-pwa",
+  "version": "1.0.0",
+  "description": "To-Do PWA с IndexedDB, готово к сборке в APK",
+  "private": true,
+  "scripts": {
+    "start": "npx serve -l 8080",
+    "icons": "node scripts/gen-icons.js"
+  },
+  "optionalDependencies": {
+    "canvas": "^3.0.0"
+  }
+}

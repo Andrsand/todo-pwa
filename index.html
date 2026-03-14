@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1a1b2e">
+  <meta name="description" content="To-Do список — задачи в одном месте">
+  <title>To-Do список</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="icons/icon-192.svg">
+  <link rel="apple-touch-icon" href="icons/icon-192.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1 class="title">To-Do</h1>
+      <p class="subtitle">Добавьте задачу ниже</p>
+    </header>
+
+    <main class="main">
+      <form class="add-form" id="addForm" autocomplete="off">
+        <input
+          type="text"
+          class="add-input"
+          id="addInput"
+          placeholder="Новая задача..."
+          maxlength="280"
+          required
+        >
+        <button type="submit" class="btn btn-add" id="addBtn" aria-label="Добавить">
+          <span class="btn-icon">+</span>
+        </button>
+      </form>
+
+      <div class="filters" role="tablist">
+        <button type="button" class="filter active" data-filter="all" role="tab">Все</button>
+        <button type="button" class="filter" data-filter="active" role="tab">Активные</button>
+        <button type="button" class="filter" data-filter="done" role="tab">Выполненные</button>
+      </div>
+
+      <ul class="task-list" id="taskList" aria-live="polite"></ul>
+
+      <div class="empty-state" id="emptyState" hidden>
+        <p>Пока нет задач. Добавьте первую.</p>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p class="stats" id="stats">0 задач</p>
+    </footer>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Генератор иконок</title>
+  <style>
+    body { font-family: system-ui; padding: 2rem; background: #1a1b2e; color: #eaeaea; }
+    canvas { display: block; margin: 1rem 0; border: 1px solid #333; }
+    a { color: #e94560; }
+    .size { margin-bottom: 1.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Скачайте иконки для PWA/APK</h1>
+  <p>Сохраните файлы в папку <code>icons/</code> (icon-192.png и icon-512.png).</p>
+  <div class="size">
+    <p>192×192 <a download="icon-192.png" href="#" id="a192">Скачать icon-192.png</a></p>
+    <canvas id="c192" width="192" height="192"></canvas>
+  </div>
+  <div class="size">
+    <p>512×512 <a download="icon-512.png" href="#" id="a512">Скачать icon-512.png</a></p>
+    <canvas id="c512" width="512" height="512"></canvas>
+  </div>
+  <script>
+    function drawIcon(canvas) {
+      const ctx = canvas.getContext('2d');
+      const s = canvas.width;
+      const r = s * 0.16;
+      ctx.fillStyle = '#1a1b2e';
+      ctx.beginPath();
+      ctx.roundRect(0, 0, s, s, r);
+      ctx.fill();
+      ctx.fillStyle = '#e94560';
+      const barH = s * 0.04;
+      const barR = barH * 0.5;
+      ctx.beginPath();
+      ctx.roundRect(s * 0.19, s * 0.4 - barH / 2, s * 0.62, barH, barR);
+      ctx.fill();
+      ctx.fillStyle = '#16213e';
+      ctx.beginPath();
+      ctx.roundRect(s * 0.19, s * 0.56 - barH / 2, s * 0.42, barH, barR);
+      ctx.fill();
+    }
+    [192, 512].forEach((size) => {
+      const c = document.getElementById('c' + size);
+      drawIcon(c);
+      const a = document.getElementById('a' + size);
+      a.href = c.toDataURL('image/png');
+    });
+  </script>
+</body>
+</html>
